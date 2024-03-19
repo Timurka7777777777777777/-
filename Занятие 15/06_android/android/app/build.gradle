@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    namespace "ru.netology.handler"
+
+    compileSdkVersion 34
+
+    defaultConfig {
+        applicationId "ru.netology.handler"
+        minSdkVersion 22
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders.usesCleartextTraffic = false
+        }
+        debug {
+            manifestPlaceholders.usesCleartextTraffic = true
+        }
+    }
+}
+
+dependencies {
+    def core_version = "1.9.0"
+    def appcompat_version = "1.5.1"
+    def constraintlayout_version = "2.1.4"
+    def mdc_version = "1.6.1"
+    def okhttp_version = "4.12.0"
+    def glide_version = "4.16.0"
+    def picasso_version = "2.71828"
+
+    implementation "androidx.core:core-ktx:$core_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "com.google.android.material:material:$mdc_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+}
